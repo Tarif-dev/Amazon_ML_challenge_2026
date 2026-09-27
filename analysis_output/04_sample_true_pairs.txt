@@ -1,0 +1,82 @@
+==========================================================================================
+STEP 1 — SAMPLING GROUND TRUTH
+==========================================================================================
+match_count= 0 available= 123,247 sampled= 200
+match_count= 1 available= 119,157 sampled= 200
+match_count= 2 available= 375,212 sampled= 200
+match_count= 3 available= 530,841 sampled= 200
+match_count= 4 available= 484,115 sampled= 200
+match_count= 5 available= 321,957 sampled= 200
+match_count= 6 available= 164,868 sampled= 200
+match_count= 7 available=  63,968 sampled= 200
+match_count= 8 available=  18,680 sampled= 200
+match_count= 9 available=   4,205 sampled= 200
+match_count=10 available=     534 sampled= 200
+match_count=11 available=      37 sampled=  37
+
+Total S1 entities sampled: 2,237
+
+==========================================================================================
+STEP 2 — LOADING S1 SAMPLE
+==========================================================================================
+S1 records retrieved: 2,237
+
+==========================================================================================
+STEP 3 — TARGET IDS TO RETRIEVE
+==========================================================================================
+S2 IDs requested: 5,494
+S3 IDs requested: 5,913
+
+==========================================================================================
+STEP 4 — RETRIEVING Source 2
+==========================================================================================
+Processed 1,000,000 rows...
+Processed 2,000,000 rows...
+Processed 3,000,000 rows...
+Processed 4,000,000 rows...
+Processed 5,000,000 rows...
+Processed 5,034,616 rows...
+Source 2 records retrieved: 5,494
+All requested IDs were found.
+
+==========================================================================================
+STEP 4 — RETRIEVING Source 3
+==========================================================================================
+Processed 1,000,000 rows...
+Processed 2,000,000 rows...
+Processed 3,000,000 rows...
+Processed 4,000,000 rows...
+Processed 5,000,000 rows...
+Source 3 records retrieved: 5,913
+All requested IDs were found.
+
+==========================================================================================
+STEP 5 — BUILDING POSITIVE PAIR TABLE
+==========================================================================================
+Positive pairs created: 11,407
+
+==========================================================================================
+DONE
+==========================================================================================
+
+Saved to:
+analysis\output\positive_pairs_sample.tsv
+
+Pair distribution by source:
+target_source
+S3    5913
+S2    5494
+
+Pair distribution by S1 match count:
+match_count_for_s1
+1      200
+2      400
+3      600
+4      800
+5     1000
+6     1200
+7     1400
+8     1600
+9     1800
+10    2000
+11     407

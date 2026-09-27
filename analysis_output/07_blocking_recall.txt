@@ -1,0 +1,54 @@
+====================================================================================================
+BLOCKING KEY ANALYSIS
+====================================================================================================
+Feature rows: 11,407
+Pair rows:    11,407
+
+Pair columns:
+['source1_entity_id', 'target_entity_id', 'target_source', 's1_business_name', 's1_business_address', 's1_country', 'target_business_name', 'target_business_address', 'target_country', 'match_count_for_s1']
+
+Feature columns:
+['source1_entity_id', 'target_entity_id', 'target_source', 'match_count_for_s1', 'country_same', 'name_raw_exact', 'name_casefold_exact', 'name_normalized_exact', 'name_sorted_token_exact', 'name_edit_similarity', 'name_token_jaccard', 'name_token_containment', 'name_len_s1', 'name_len_target', 'address_raw_exact', 'address_casefold_exact', 'address_normalized_exact', 'address_edit_similarity', 'address_token_jaccard', 'address_token_containment', 'address_len_s1', 'address_len_target']
+
+Merged rows: 11,407
+
+Columns after merge:
+['source1_entity_id', 'target_entity_id', 'target_source', 'match_count_for_s1', 'country_same', 'name_raw_exact', 'name_casefold_exact', 'name_normalized_exact', 'name_sorted_token_exact', 'name_edit_similarity', 'name_token_jaccard', 'name_token_containment', 'name_len_s1', 'name_len_target', 'address_raw_exact', 'address_casefold_exact', 'address_normalized_exact', 'address_edit_similarity', 'address_token_jaccard', 'address_token_containment', 'address_len_s1', 'address_len_target', 's1_business_name', 's1_business_address', 's1_country', 'target_business_name', 'target_business_address', 'target_country', 'match_count_for_s1_pair']
+
+====================================================================================================
+BLOCKING RECALL
+====================================================================================================
+Normalized name exact:        21.71%
+Shared name token:             86.27%
+Normalized address exact:      9.09%
+Shared address token:          95.44%
+
+====================================================================================================
+BLOCKING RECALL BY TARGET SOURCE
+====================================================================================================
+
+--- S2 ---
+Pairs: 5,494
+Normalized name exact:   22.44%
+Shared name token:        85.27%
+Normalized address exact: 12.65%
+Shared address token:      95.45%
+
+--- S3 ---
+Pairs: 5,913
+Normalized name exact:   21.02%
+Shared name token:        87.20%
+Normalized address exact: 5.78%
+Shared address token:      95.43%
+
+====================================================================================================
+COMBINED BLOCKING RECALL
+====================================================================================================
+name_exact OR address_exact             29.38%
+name_token OR address_exact             87.57%
+name_exact OR address_token             96.49%
+name_token OR address_token             99.99%
+
+====================================================================================================
+DONE
+====================================================================================================

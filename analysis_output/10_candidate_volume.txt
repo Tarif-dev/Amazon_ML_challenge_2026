@@ -1,0 +1,396 @@
+
+####################################################################################################
+# AMAZON ML CHALLENGE — CANDIDATE VOLUME EXPERIMENT
+####################################################################################################
+
+Project root: D:\amzn_ml_challenge
+Train directory: D:\amzn_ml_challenge\student_resource\dataset\train
+S1 sample size: 10,000
+Thresholds: [500, 1000, 5000, 10000, 50000]
+
+==========================================================================================
+LOADING SOURCE 1 SAMPLE
+==========================================================================================
+File: D:\amzn_ml_challenge\student_resource\dataset\train\train_source1.tsv
+Sample size: 10,000
+Full S1 rows: 2,206,821
+Sample rows: 10,000
+Loading time: 3.59s
+
+
+
+####################################################################################################
+# ANALYZING S2
+####################################################################################################
+
+==========================================================================================
+BUILDING TOKEN FREQUENCIES
+==========================================================================================
+File: D:\amzn_ml_challenge\student_resource\dataset\train\train_source2.tsv
+Processed 5,034,616 rows...
+Finished: 5,034,616 rows
+Unique name tokens: 810,514
+Unique address tokens: 607,943
+Time: 88.27s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 500
+------------------------------------------------------------------------------------------
+Indexed 5,034,616 rows...
+Rows indexed: 5,034,616
+Indexed name tokens: 807,680
+Indexed address tokens: 601,853
+Index build time: 92.46s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S2 — THRESHOLD 500
+==========================================================================================
+Mean candidates:       269.30
+Median candidates:     212
+P90 candidates:        611
+P95 candidates:        751
+P99 candidates:        1,003
+Maximum candidates:    1,853
+
+Zero candidates:       1,080 (10.80%)
+< 10 candidates:       1,429 (14.29%)
+< 50 candidates:       2,265 (22.65%)
+< 100 candidates:      3,239 (32.39%)
+< 500 candidates:      8,332 (83.32%)
+< 1,000 candidates:    9,896 (98.96%)
+< 5,000 candidates:    10,000 (100.00%)
+< 10,000 candidates:   10,000 (100.00%)
+
+Candidate calculation time: 0.76s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 1,000
+------------------------------------------------------------------------------------------
+Indexed 5,034,616 rows...
+Rows indexed: 5,034,616
+Indexed name tokens: 808,972
+Indexed address tokens: 604,651
+Index build time: 102.28s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S2 — THRESHOLD 1,000
+==========================================================================================
+Mean candidates:       761.85
+Median candidates:     670
+P90 candidates:        1,626
+P95 candidates:        1,918
+P99 candidates:        2,604
+Maximum candidates:    4,607
+
+Zero candidates:       471 (4.71%)
+< 10 candidates:       620 (6.20%)
+< 50 candidates:       1,008 (10.08%)
+< 100 candidates:      1,475 (14.75%)
+< 500 candidates:      4,105 (41.05%)
+< 1,000 candidates:    6,883 (68.83%)
+< 5,000 candidates:    10,000 (100.00%)
+< 10,000 candidates:   10,000 (100.00%)
+
+Candidate calculation time: 1.32s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 5,000
+------------------------------------------------------------------------------------------
+Indexed 5,034,616 rows...
+Rows indexed: 5,034,616
+Indexed name tokens: 809,965
+Indexed address tokens: 607,152
+Index build time: 100.38s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S2 — THRESHOLD 5,000
+==========================================================================================
+Mean candidates:       4,954.40
+Median candidates:     4,507
+P90 candidates:        9,394
+P95 candidates:        11,099
+P99 candidates:        14,609
+Maximum candidates:    22,735
+
+Zero candidates:       24 (0.24%)
+< 10 candidates:       38 (0.38%)
+< 50 candidates:       66 (0.66%)
+< 100 candidates:      109 (1.09%)
+< 500 candidates:      471 (4.71%)
+< 1,000 candidates:    925 (9.25%)
+< 5,000 candidates:    5,613 (56.13%)
+< 10,000 candidates:   9,220 (92.20%)
+
+Candidate calculation time: 4.96s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 10,000
+------------------------------------------------------------------------------------------
+Indexed 5,034,616 rows...
+Rows indexed: 5,034,616
+Indexed name tokens: 810,176
+Indexed address tokens: 607,503
+Index build time: 98.28s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S2 — THRESHOLD 10,000
+==========================================================================================
+Mean candidates:       10,442.36
+Median candidates:     9,350
+P90 candidates:        19,914
+P95 candidates:        23,555
+P99 candidates:        31,157
+Maximum candidates:    59,076
+
+Zero candidates:       3 (0.03%)
+< 10 candidates:       7 (0.07%)
+< 50 candidates:       12 (0.12%)
+< 100 candidates:      26 (0.26%)
+< 500 candidates:      147 (1.47%)
+< 1,000 candidates:    312 (3.12%)
+< 5,000 candidates:    2,461 (24.61%)
+< 10,000 candidates:   5,391 (53.91%)
+
+Candidate calculation time: 9.34s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 50,000
+------------------------------------------------------------------------------------------
+Indexed 5,034,616 rows...
+Rows indexed: 5,034,616
+Indexed name tokens: 810,474
+Indexed address tokens: 607,825
+Index build time: 95.26s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S2 — THRESHOLD 50,000
+==========================================================================================
+Mean candidates:       61,440.57
+Median candidates:     54,358
+P90 candidates:        116,573
+P95 candidates:        137,954
+P99 candidates:        181,595
+Maximum candidates:    302,358
+
+Zero candidates:       0 (0.00%)
+< 10 candidates:       0 (0.00%)
+< 50 candidates:       0 (0.00%)
+< 100 candidates:      0 (0.00%)
+< 500 candidates:      3 (0.03%)
+< 1,000 candidates:    7 (0.07%)
+< 5,000 candidates:    234 (2.34%)
+< 10,000 candidates:   546 (5.46%)
+
+Candidate calculation time: 60.40s
+
+
+
+####################################################################################################
+# ANALYZING S3
+####################################################################################################
+
+==========================================================================================
+BUILDING TOKEN FREQUENCIES
+==========================================================================================
+File: D:\amzn_ml_challenge\student_resource\dataset\train\train_source3.tsv
+Processed 5,285,603 rows...
+Finished: 5,285,603 rows
+Unique name tokens: 863,014
+Unique address tokens: 580,065
+Time: 85.31s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 500
+------------------------------------------------------------------------------------------
+Indexed 5,285,603 rows...
+Rows indexed: 5,285,603
+Indexed name tokens: 860,216
+Indexed address tokens: 573,996
+Index build time: 95.57s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S3 — THRESHOLD 500
+==========================================================================================
+Mean candidates:       269.82
+Median candidates:     213
+P90 candidates:        614
+P95 candidates:        749
+P99 candidates:        1,030
+Maximum candidates:    1,795
+
+Zero candidates:       1,091 (10.91%)
+< 10 candidates:       1,428 (14.28%)
+< 50 candidates:       2,285 (22.85%)
+< 100 candidates:      3,269 (32.69%)
+< 500 candidates:      8,296 (82.96%)
+< 1,000 candidates:    9,874 (98.74%)
+< 5,000 candidates:    10,000 (100.00%)
+< 10,000 candidates:   10,000 (100.00%)
+
+Candidate calculation time: 0.68s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 1,000
+------------------------------------------------------------------------------------------
+Indexed 5,285,603 rows...
+Rows indexed: 5,285,603
+Indexed name tokens: 861,464
+Indexed address tokens: 576,715
+Index build time: 100.56s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S3 — THRESHOLD 1,000
+==========================================================================================
+Mean candidates:       742.95
+Median candidates:     644
+P90 candidates:        1,599
+P95 candidates:        1,896
+P99 candidates:        2,524
+Maximum candidates:    4,084
+
+Zero candidates:       487 (4.87%)
+< 10 candidates:       638 (6.38%)
+< 50 candidates:       1,037 (10.37%)
+< 100 candidates:      1,524 (15.24%)
+< 500 candidates:      4,209 (42.09%)
+< 1,000 candidates:    6,993 (69.93%)
+< 5,000 candidates:    10,000 (100.00%)
+< 10,000 candidates:   10,000 (100.00%)
+
+Candidate calculation time: 2.05s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 5,000
+------------------------------------------------------------------------------------------
+Indexed 5,285,603 rows...
+Rows indexed: 5,285,603
+Indexed name tokens: 862,459
+Indexed address tokens: 579,246
+Index build time: 107.39s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S3 — THRESHOLD 5,000
+==========================================================================================
+Mean candidates:       5,309.47
+Median candidates:     4,894
+P90 candidates:        10,037
+P95 candidates:        11,673
+P99 candidates:        15,068
+Maximum candidates:    21,906
+
+Zero candidates:       39 (0.39%)
+< 10 candidates:       56 (0.56%)
+< 50 candidates:       95 (0.95%)
+< 100 candidates:      142 (1.42%)
+< 500 candidates:      504 (5.04%)
+< 1,000 candidates:    910 (9.10%)
+< 5,000 candidates:    5,129 (51.29%)
+< 10,000 candidates:   8,987 (89.87%)
+
+Candidate calculation time: 5.94s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 10,000
+------------------------------------------------------------------------------------------
+Indexed 5,285,603 rows...
+Rows indexed: 5,285,603
+Indexed name tokens: 862,668
+Indexed address tokens: 579,602
+Index build time: 104.79s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S3 — THRESHOLD 10,000
+==========================================================================================
+Mean candidates:       13,579.03
+Median candidates:     12,818
+P90 candidates:        23,038
+P95 candidates:        26,616
+P99 candidates:        33,815
+Maximum candidates:    63,525
+
+Zero candidates:       2 (0.02%)
+< 10 candidates:       6 (0.06%)
+< 50 candidates:       6 (0.06%)
+< 100 candidates:      13 (0.13%)
+< 500 candidates:      69 (0.69%)
+< 1,000 candidates:    136 (1.36%)
+< 5,000 candidates:    1,046 (10.46%)
+< 10,000 candidates:   3,366 (33.66%)
+
+Candidate calculation time: 15.06s
+
+------------------------------------------------------------------------------------------
+BUILDING INDEX — MAX TOKEN FREQUENCY = 50,000
+------------------------------------------------------------------------------------------
+Indexed 5,285,603 rows...
+Rows indexed: 5,285,603
+Indexed name tokens: 862,972
+Indexed address tokens: 579,946
+Index build time: 104.74s
+Processed S1: 10,000/10,000
+
+
+==========================================================================================
+CANDIDATE VOLUME — S3 — THRESHOLD 50,000
+==========================================================================================
+Mean candidates:       66,472.06
+Median candidates:     58,334
+P90 candidates:        123,310
+P95 candidates:        145,831
+P99 candidates:        189,988
+Maximum candidates:    322,765
+
+Zero candidates:       0 (0.00%)
+< 10 candidates:       0 (0.00%)
+< 50 candidates:       0 (0.00%)
+< 100 candidates:      0 (0.00%)
+< 500 candidates:      0 (0.00%)
+< 1,000 candidates:    2 (0.02%)
+< 5,000 candidates:    29 (0.29%)
+< 10,000 candidates:   182 (1.82%)
+
+Candidate calculation time: 67.53s
+
+
+
+####################################################################################################
+# FINAL SUMMARY
+####################################################################################################
+source  threshold      mean median     p90     p95     p99     max  zero
+    S2        500    269.30    212     611     751   1,003   1,853 1,080
+    S2       1000    761.85    670   1,626   1,918   2,604   4,607   471
+    S2       5000  4,954.40  4,507   9,394  11,099  14,609  22,735    24
+    S2      10000 10,442.36  9,350  19,914  23,555  31,157  59,076     3
+    S2      50000 61,440.57 54,358 116,573 137,954 181,595 302,358     0
+    S3        500    269.82    213     614     749   1,030   1,795 1,091
+    S3       1000    742.95    644   1,599   1,896   2,524   4,084   487
+    S3       5000  5,309.47  4,894  10,037  11,673  15,068  21,906    39
+    S3      10000 13,579.03 12,818  23,038  26,616  33,815  63,525     2
+    S3      50000 66,472.06 58,334 123,310 145,831 189,988 322,765     0
+
+Results saved to:
+D:\amzn_ml_challenge\analysis\08_candidate_volume_results.tsv
+
+Total experiment time: 1354.02s
+
+==========================================================================================
+DONE
+==========================================================================================

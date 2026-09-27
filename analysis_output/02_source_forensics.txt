@@ -1,0 +1,416 @@
+====================================================================================================
+AMAZON ML CHALLENGE — SOURCE FORENSICS
+====================================================================================================
+
+====================================================================================================
+train_source1
+student_resource\dataset\train\train_source1.tsv
+====================================================================================================
+Rows: 2,206,821
+
+[1] ENTITY IDs
+Unique IDs: 2,206,821
+Duplicate ID rows: 0
+
+[2] MISSING VALUES
+business_name       :          0 (  0.000%)
+business_address    :          0 (  0.000%)
+country             :          0 (  0.000%)
+
+[3] TOP COUNTRIES
+US                    1,323,633 ( 59.98%)
+India                   883,188 ( 40.02%)
+
+[4] BUSINESS NAME LENGTH
+count    2.206821e+06
+mean     2.403440e+01
+std      7.740533e+00
+min      3.000000e+00
+1%       8.000000e+00
+5%       1.200000e+01
+25%      1.800000e+01
+50%      2.400000e+01
+75%      3.000000e+01
+95%      3.700000e+01
+99%      4.200000e+01
+max      1.050000e+02
+Name: business_name, dtype: float64
+
+[5] BUSINESS ADDRESS LENGTH
+count    2.206821e+06
+mean     5.206621e+01
+std      2.532972e+01
+min      1.100000e+01
+1%       2.200000e+01
+5%       2.700000e+01
+25%      3.300000e+01
+50%      4.100000e+01
+75%      7.000000e+01
+95%      1.030000e+02
+99%      1.240000e+02
+max      2.560000e+02
+Name: business_address, dtype: float64
+
+[6] EXACT DUPLICATE RECORDS
+Rows belonging to duplicate groups: 0
+Repeated (name,address,country) groups: 0
+
+[7] BUSINESS NAME DUPLICATION
+Names appearing more than once: 177,793
+
+[8] SAMPLE NON-ASCII NAMES
+Empty DataFrame
+Columns: [entity_id, business_name, business_address, country]
+Index: []
+
+====================================================================================================
+train_source2
+student_resource\dataset\train\train_source2.tsv
+====================================================================================================
+Rows: 5,034,616
+
+[1] ENTITY IDs
+Unique IDs: 5,034,616
+Duplicate ID rows: 0
+
+[2] MISSING VALUES
+business_name       :          0 (  0.000%)
+business_address    :    168,967 (  3.356%)
+country             :          0 (  0.000%)
+
+[3] TOP COUNTRIES
+US                    3,016,817 ( 59.92%)
+India                 2,017,799 ( 40.08%)
+
+[4] BUSINESS NAME LENGTH
+count    5.034616e+06
+mean     2.510357e+01
+std      8.894692e+00
+min      2.000000e+00
+1%       8.000000e+00
+5%       1.200000e+01
+25%      1.900000e+01
+50%      2.500000e+01
+75%      3.100000e+01
+95%      4.000000e+01
+99%      4.800000e+01
+max      1.040000e+02
+Name: business_name, dtype: float64
+
+[5] BUSINESS ADDRESS LENGTH
+count    5.034616e+06
+mean     4.622591e+01
+std      2.484467e+01
+min      0.000000e+00
+1%       0.000000e+00
+5%       2.200000e+01
+25%      3.000000e+01
+50%      3.700000e+01
+75%      6.100000e+01
+95%      9.600000e+01
+99%      1.180000e+02
+max      2.490000e+02
+Name: business_address, dtype: float64
+
+[6] EXACT DUPLICATE RECORDS
+Rows belonging to duplicate groups: 50,933
+Repeated (name,address,country) groups: 25,060
+
+[7] BUSINESS NAME DUPLICATION
+Names appearing more than once: 239,779
+
+[8] SAMPLE NON-ASCII NAMES
+   entity_id                           business_name                                                                                          business_address country
+S2-166376419         राम मार्केटिंग प्राइवेट लिमिटेड                                                              KH NO. -570/13, NEW DELHI, WEST DELHI, Delhi   India  
+S2-639257739                आदित्य प्रॉपर्टीज एलएलपी                                                          G-3/571, GULMOHAR COLONY, BHOPAL, Madhya Pradesh   India  
+S2-615967906        सन कंस्ट्रक्शंस प्राइवेट लिमिटेड 43 SUKH SAMRUDDHI, Maharashtra, PUNE REGION, PUNE, BUNGALOW NO. 5, S. NO. 5, VIDISHA SOCIETY, KARVE NAGAR   India  
+S2-566688803                 रियल मॉडर्न फूड लिमिटेड                               SHP NO. G-4, PLOT NO. 19, SECTOR 42, NERUL, THANE, NAVI MUMBAI, Maharashtra   India  
+S2-879667609       குளோபல் பிசினஸ் பிரைவேட் லிமிடெட்                                                                  #C-21 - S, AMBATTUR, CHENNAI, Tamil Nadu   India  
+S2-783158461                  Animal Welfare Nétwork                                                                           260 CADILLAC DR, SACRAMENTO, CA      US  
+S2-978126813         Private Ambernath Sólar Limited                            PLOT NO B-78/1, ADDITIONAL MIDC ANAND NAGAR, AMBERNATH EAST, THANE, महाराष्ट्र   India  
+S2-348280942 શક્તિ અર્બન પ્રોડક્ટ્સ પ્રાઇવેટ લિમિટેડ                               SHOP NO.F107 AND F106, FIRST FLOOR SOHAM RESICOM, VADODARA, KALALI, Gujarat   India  
+ S2-64510343   अल्फा अल टेक्नोलॉजीज प्राइवेट लिमिटेड                                 NO 990 C-2 GREATER KAILASH ENCLAVE PART-II, NEW DELHI, SOUTH DELHI, Delhi   India  
+S2-631299191           ग्लोबल इन्वेस्टमेंट प्रा. लि.                                       PLOT NO. ##74, SECOND FLOOR ZONE-2, M.P. NAGAR, BHOPAL, मध्य प्रदेश   India  
+
+====================================================================================================
+train_source3
+student_resource\dataset\train\train_source3.tsv
+====================================================================================================
+Rows: 5,285,603
+
+[1] ENTITY IDs
+Unique IDs: 5,285,603
+Duplicate ID rows: 0
+
+[2] MISSING VALUES
+business_name       :          0 (  0.000%)
+business_address    :    175,916 (  3.328%)
+country             :          0 (  0.000%)
+
+[3] TOP COUNTRIES
+US                    3,170,056 ( 59.98%)
+India                 2,115,547 ( 40.02%)
+
+[4] BUSINESS NAME LENGTH
+count    5.285603e+06
+mean     2.520214e+01
+std      9.493623e+00
+min      2.000000e+00
+1%       6.000000e+00
+5%       1.100000e+01
+25%      1.800000e+01
+50%      2.500000e+01
+75%      3.100000e+01
+95%      4.200000e+01
+99%      5.000000e+01
+max      1.230000e+02
+Name: business_name, dtype: float64
+
+[5] BUSINESS ADDRESS LENGTH
+count    5.285603e+06
+mean     4.671444e+01
+std      2.164981e+01
+min      0.000000e+00
+1%       0.000000e+00
+5%       2.200000e+01
+25%      3.500000e+01
+50%      4.200000e+01
+75%      5.400000e+01
+95%      9.100000e+01
+99%      1.150000e+02
+max      2.400000e+02
+Name: business_address, dtype: float64
+
+[6] EXACT DUPLICATE RECORDS
+Rows belonging to duplicate groups: 37,241
+Repeated (name,address,country) groups: 18,381
+
+[7] BUSINESS NAME DUPLICATION
+Names appearing more than once: 258,276
+
+[8] SAMPLE NON-ASCII NAMES
+   entity_id                               business_name                                                                                business_address country
+ S3-22467283                 LLC Moncada Léarning Center                                                                 5780 Fawn Ct, Fort Worth, Texas      US        
+ S3-16693061                                       Béque                                                            189 Connmre Dr, Nashville, Tennessee      US        
+ S3-45067784         அரிஹந்த் Foundation Private Limited                          Saranampatti Roadvellakinar Post Coimbatore, Tamilnadu, Coimbatore, TN   India        
+S3-181819854 Cardiology Heartland Cáre Associates #98825                                                              Tennessee, 607 Fourth St, Columbia      US        
+ S3-32805948        സിൽവർ കൺസൾട്ടൻസി പ്രൈവറ്റ് ലിമിറ്റഡ്                     Ernakulam, KL, 18/479E/3 Peringattil Tower Kangarappady Kakkanad, Ernakulam   India        
+S3-256812623                            ब्लू टेक्नोलॉजीज                          MH, East Garo Hills, 2, Swadhin Sadan, C-road, Churchgate, Mumbai City   India        
+S3-726575561                  గుజరాత్ Logistics లిమిటెడ్                             H.no 4-0 Flat No. 103, Sai Bhavana Encl Kamala Nagar, Hyderabad, TG   India        
+S3-975758507                      Secure Secure Cárolina                                                               3576 Astor Avenue, Columbus, Ohio      US        
+ S3-74613320               Royal Mémorial Trust Holdings Door No 0521 Trinity No 1/1 4Nd Main Road K H M Block Ganganagar R T, Nagar, Bangalore, ಕರ್ನಾಟಕ   India        
+S3-660160649         Chavarin Property óf Queensbury LLC                                      55 Needle Park Cir, Unit Apartment 2, Queensbury, New York      US        
+
+====================================================================================================
+test_source1
+student_resource\dataset\test\test_source1.tsv
+====================================================================================================
+Rows: 1,732,544
+
+[1] ENTITY IDs
+Unique IDs: 1,732,544
+Duplicate ID rows: 0
+
+[2] MISSING VALUES
+business_name       :          0 (  0.000%)
+business_address    :          0 (  0.000%)
+country             :          0 (  0.000%)
+
+[3] TOP COUNTRIES
+India                   809,986 ( 46.75%)
+US                      663,106 ( 38.27%)
+France                  259,452 ( 14.98%)
+
+[4] BUSINESS NAME LENGTH
+count    1.732544e+06
+mean     2.383643e+01
+std      7.668639e+00
+min      3.000000e+00
+1%       8.000000e+00
+5%       1.200000e+01
+25%      1.800000e+01
+50%      2.400000e+01
+75%      2.900000e+01
+95%      3.600000e+01
+99%      4.200000e+01
+max      9.200000e+01
+Name: business_name, dtype: float64
+
+[5] BUSINESS ADDRESS LENGTH
+count    1.732544e+06
+mean     5.721318e+01
+std      2.502589e+01
+min      1.100000e+01
+1%       2.400000e+01
+5%       2.800000e+01
+25%      3.600000e+01
+50%      5.000000e+01
+75%      7.400000e+01
+95%      1.050000e+02
+99%      1.260000e+02
+max      2.680000e+02
+Name: business_address, dtype: float64
+
+[6] EXACT DUPLICATE RECORDS
+Rows belonging to duplicate groups: 0
+Repeated (name,address,country) groups: 0
+
+[7] BUSINESS NAME DUPLICATION
+Names appearing more than once: 129,955
+
+[8] SAMPLE NON-ASCII NAMES
+   entity_id                      business_name                                                  business_address country
+S1-385801270         Maison de Santé Generation             30 Rue Louis Thénard, Saint-Nazaire, Pays de la Loire  France
+S1-295346696       École primaire Sainte Pierre                         22 RUE Descartes, Hauts-de-France, Calais  France
+S1-527611593    Établissements Demployeurs SARL              234 Rue de la République, Dunkerque, Hauts-de-France  France
+S1-693956169        École primaire de la Sainte                   841 Avenue de Dunkerque, Lille, Hauts-de-France  France
+S1-871112769               École primaire du Hj                   36 Rue des Trois Rois, Nantes, Pays de la Loire  France
+S1-868105169                 Collège Saint Jean                  123 COUR2 de lYser, Bordeaux, Nouvelle-Aquitaine  France
+S1-269743554          Lège-Cap-Ferret Club SASU 23 bis Allee de la Franchise, Lège-Cap-Ferret, Nouvelle-Aquitaine  France
+S1-379378394   Établissements Plaisanciers EURL                  Hauts-de-France, 55 Rue de Saint-omer, Tourcoing  France
+S1-377942865 Maison de Santé de la Coordination             76 Rue Marcel Sembat, Saint-Nazaire, Pays de la Loire  France
+S1-137870529               Fédération du Lecole                     54 Rue la Perouse, Tourcoing, Hauts-de-France  France
+
+====================================================================================================
+test_source2
+student_resource\dataset\test\test_source2.tsv
+====================================================================================================
+Rows: 4,887,273
+
+[1] ENTITY IDs
+Unique IDs: 4,887,273
+Duplicate ID rows: 0
+
+[2] MISSING VALUES
+business_name       :          0 (  0.000%)
+business_address    :    129,408 (  2.648%)
+country             :          0 (  0.000%)
+
+[3] TOP COUNTRIES
+India                 2,312,565 ( 47.32%)
+US                    1,871,330 ( 38.29%)
+France                  703,378 ( 14.39%)
+
+[4] BUSINESS NAME LENGTH
+count    4.887273e+06
+mean     2.570365e+01
+std      9.124908e+00
+min      2.000000e+00
+1%       8.000000e+00
+5%       1.200000e+01
+25%      1.900000e+01
+50%      2.500000e+01
+75%      3.200000e+01
+95%      4.200000e+01
+99%      4.900000e+01
+max      1.020000e+02
+Name: business_name, dtype: float64
+
+[5] BUSINESS ADDRESS LENGTH
+count    4.887273e+06
+mean     5.041341e+01
+std      2.534708e+01
+min      0.000000e+00
+1%       0.000000e+00
+5%       2.300000e+01
+25%      3.200000e+01
+50%      4.300000e+01
+75%      6.700000e+01
+95%      9.900000e+01
+99%      1.200000e+02
+max      2.690000e+02
+Name: business_address, dtype: float64
+
+[6] EXACT DUPLICATE RECORDS
+Rows belonging to duplicate groups: 44,550
+Repeated (name,address,country) groups: 21,909
+
+[7] BUSINESS NAME DUPLICATION
+Names appearing more than once: 223,103
+
+[8] SAMPLE NON-ASCII NAMES
+   entity_id                           business_name                                                                               business_address country
+S2-158121477                        SCI Ptit Àmicale                                                                18 RUE JEN ZAY, Dunkerque, Nord  France
+S2-956479781                కృష్ణా ఇంపెక్స్ లిమిటెడ్ H.NO 27TH FLOOR, Telangana, HYDERABAD, SERI LINGAMPALLY, G SQUARE, NEAR WELLS FARGO, RAIDURGAM   India
+S2-875724478           ૐ Foundation પ્રાઇવેટ લિમિટેડ   #203, NARAYAN KRUPA SQUARE, B/H NATRAJ CINEMA, NR. SAKAR V, ASHRAM R, OAD, MEMNAGAR, Gujarat   India
+S2-537184954             ਸਕਾਈ ਅਰਿਹੰਤ ਗਲੋਬਲ ਪ੍ਰਾ. ਲਿ.                 NO 3121, WARD NO. 9 NEEM WALA CHOWK, MOHALI, SAHIBZADA AJIT SINGH NAGAR, ਪੰਜਾਬ   India
+S2-262646344                         OZT ÀMICALE SAS                                                        24 R DESAIX, TOURCOING, Hauts-de-France  France
+S2-440948455                Pártnérs Manpower Nagiya                                               H.NO 111/475 BRAHMA NAGAR, KANPUR, Uttar Pradesh   India
+S2-878037834               Association du Pàrenthese                                                                   17 RUE YVES BODIGUEL, NANTES  France
+S2-933724724                   Production Thê Jeunes                                                9 B CITÉ MOUNEYRA, BORDEAUX, Nouvelle-Aquitaine  France
+S2-744323706 ইনোভেটিভ প্রোডাক্টস রেস্টুরেন্ট লিমিটেড                       NO 39 C/O TAPAN KUMAR SAMANTA DAMODARPUR, TAMLUK, MIDNAPORE, West Bengal   India
+S2-378851466                           Sebago Héalth                                                                 55 HANCOCK POND RD, SEBAGO, ME      US
+
+====================================================================================================
+test_source3
+student_resource\dataset\test\test_source3.tsv
+====================================================================================================
+Rows: 5,082,316
+
+[1] ENTITY IDs
+Unique IDs: 5,082,316
+Duplicate ID rows: 0
+
+[2] MISSING VALUES
+business_name       :          0 (  0.000%)
+business_address    :    136,098 (  2.678%)
+country             :          0 (  0.000%)
+
+[3] TOP COUNTRIES
+India                 2,405,000 ( 47.32%)
+US                    1,945,701 ( 38.28%)
+France                  731,615 ( 14.40%)
+
+[4] BUSINESS NAME LENGTH
+count    5.082316e+06
+mean     2.565519e+01
+std      9.565673e+00
+min      2.000000e+00
+1%       6.000000e+00
+5%       1.100000e+01
+25%      1.900000e+01
+50%      2.500000e+01
+75%      3.200000e+01
+95%      4.200000e+01
+99%      5.000000e+01
+max      1.030000e+02
+Name: business_name, dtype: float64
+
+[5] BUSINESS ADDRESS LENGTH
+count    5.082316e+06
+mean     4.874047e+01
+std      2.264386e+01
+min      0.000000e+00
+1%       0.000000e+00
+5%       2.200000e+01
+25%      3.500000e+01
+50%      4.300000e+01
+75%      5.900000e+01
+95%      9.400000e+01
+99%      1.170000e+02
+max      2.670000e+02
+Name: business_address, dtype: float64
+
+[6] EXACT DUPLICATE RECORDS
+Rows belonging to duplicate groups: 32,154
+Repeated (name,address,country) groups: 15,861
+
+[7] BUSINESS NAME DUPLICATION
+Names appearing more than once: 238,156
+
+[8] SAMPLE NON-ASCII NAMES
+   entity_id                          business_name                                                                                         business_address country
+S3-462677478                         मॉडर्न फाइनेंस                                     No 10 Enkay Square, 448A, Udyog Vihar Phase V, Gurugram, Gurgaon, HR   India    
+S3-184785497 ஈஸ்டர்ன் கன்சல்டன்சி பிரைவேட் லிமிடெட்                            1410 Sri Mahalakshmi Mandiar 59, Justice Rathinavel Pandian Road, Chennai, TN   India    
+S3-560657213                     Sun पावर Provision                                                 143-Alig Flats Rajouri Garden, New Delhi, West Delhi, DL   India    
+ S3-92755938              Engages Àrt Pharmacie SCI                                                                 250 R De Lille, Roubaix, Hauts-de-France  France    
+S3-712130770       Europ & Frères Distribution S.A.                                                            (41) Rue Des Thuyas, Lège-cap-ferret, Gironde  France    
+S3-877919199    ಡಿಜಿಟಲ್ ಬಿಲ್ಡರ್ಸ್ ಪ್ರೈವೇಟ್ ಲಿಮಿಟೆಡ್ 120Th, 3Rd Flr, 1St Main Rd, Hbr 2Nd Stage Opp Inam Masjid, Shampura Main Road, Bangalore, Bengaluru, KA   India    
+S3-305215419                 Fédération de Velo SAS                                                         11 Rue Deregnaucourt, Tourcoing, Hauts-de-France  France    
+S3-416247723               Gill and Búrke Aspac Inc                                                                         1579. 220th Avenue, Delmar, Iowa      US    
+S3-717745791        शक्ति इम्पेक्स प्राइवेट लिमिटेड                                                      1335, 1St Floor, Sector 15 Part 2, Gurgaon, हरियाणा   India    
+  S3-1062100                    Deleves Elémentaire                                                                9 Anenue De Bougainville, Lege-cap-ferret  France    
+
+====================================================================================================
+DONE
+====================================================================================================

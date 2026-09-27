@@ -1,0 +1,142 @@
+(amzn_ml_challenge) PS D:\amzn_ml_challenge> uv run .\analysis\01_ground_truth_forensics.py
+================================================================================
+GROUND TRUTH FORENSICS
+================================================================================
+
+Rows: 2,206,821
+Columns: ['source1_entity_id', 'matched_entity_ids']
+
+[1] SOURCE 1 DUPLICATES
+Duplicate S1 rows: 0
+
+[2] MATCH COUNT DISTRIBUTION
+count    2.206821e+06
+mean     3.461253e+00
+std      1.705323e+00
+min      0.000000e+00
+25%      2.000000e+00
+50%      3.000000e+00
+75%      5.000000e+00
+max      1.100000e+01
+Name: match_count, dtype: float64
+
+Exact distribution:
+match_count
+0     123247
+1     119157
+2     375212
+3     530841
+4     484115
+5     321957
+6     164868
+7      63968
+8      18680
+9       4205
+10       534
+11        37
+
+[3] SINGLETONS
+Singletons: 123,247
+Singleton rate: 5.5848%
+
+[4] S2 / S3 MATCH DISTRIBUTION
+
+S2 matches per S1:
+s2_count
+0    287745
+1    789108
+2    652779
+3    333957
+4    119078
+5     24154
+
+S3 matches per S1:
+s3_count
+0    266276
+1    716417
+2    668375
+3    372443
+4    145116
+5     35378
+6      2816
+
+[5] MULTIPLE MATCHES FROM SAME SOURCE
+S1 entities with >1 S2 match: 1,129,968
+S1 entities with >1 S3 match: 1,224,128
+
+[6] TARGET ID REUSE
+Unique S2 IDs appearing in GT: 3,693,619
+S2 IDs reused across S1 rows: 0
+Unique S3 IDs appearing in GT: 3,944,746
+S3 IDs reused across S1 rows: 0
+
+[7] MAXIMUM MATCH COUNTS
+Maximum total matches for one S1: 11
+Maximum S2 matches for one S1: 5
+Maximum S3 matches for one S1: 6
+
+[8] EXAMPLES
+
+S1-5464840
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-339023987,S2-469685256,S2-902469498,S2-114904186,S2-519325782,S3-50560608,S3-482684953,S3-492444881,S3-779516315,S3-397587706,S3-279888604
+
+S1-662651729
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-715742383,S2-970330969,S2-722699075,S2-482797490,S2-566480858,S3-418079847,S3-576133663,S3-534100537,S3-797182546,S3-261712700,S3-817154303
+
+S1-611116729
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-941369831,S2-771297374,S2-496136040,S2-66257563,S2-313951559,S3-1234189,S3-138199021,S3-180930209,S3-921604003,S3-916645129,S3-542375962
+
+S1-873066411
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-308890860,S2-187058817,S2-972165829,S2-772917195,S2-152816909,S3-890673301,S3-358753849,S3-202709766,S3-832109140,S3-477071910,S3-982279471
+
+S1-765235386
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-974245938,S2-780050080,S2-530977555,S2-999166703,S2-91149265,S3-530547708,S3-139315478,S3-253465500,S3-792739406,S3-78491172,S3-466429859
+
+S1-922469887
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-374317917,S2-865292746,S2-48795525,S2-612755348,S2-338750498,S3-353877003,S3-112741439,S3-517378418,S3-292905066,S3-248106716,S3-433885075
+
+S1-439823948
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-473599419,S2-9772066,S2-900794900,S2-131769420,S2-197844917,S3-976962387,S3-486424690,S3-710328248,S3-597153967,S3-932172538,S3-835612624
+
+S1-667470626
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-244496472,S2-140798239,S2-761090325,S2-847406757,S2-984605056,S3-106835900,S3-874065803,S3-813247000,S3-420808137,S3-342425785,S3-193091957
+
+S1-788836955
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-270620134,S2-545251131,S2-824881705,S2-381262575,S2-78435572,S3-376679468,S3-766149105,S3-447634649,S3-610603089,S3-262982936,S3-731588339
+
+S1-6278821
+  total matches: 11
+  S2 matches: 5
+  S3 matches: 6
+  IDs: S2-437861200,S2-943911946,S2-58385913,S2-953505562,S2-685787859,S3-607731898,S3-110798367,S3-338068366,S3-738476694,S3-234955028,S3-689009069
+
+================================================================================
+DONE
+================================================================================

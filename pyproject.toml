@@ -1,0 +1,26 @@
+[project]
+name = "amzn-ml-challenge"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "datasketch>=2.0.0",
+    "joblib>=1.6.0",
+    "lightgbm>=4.7.0",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.0,<2.6",
+    "pandas>=3.0.6",
+    "plotly>=7.1.0",
+    "pyyaml>=6.0.3",
+    "rapidfuzz>=3.14.6",
+    "scikit-learn>=1.9.1",
+    "scipy>=1.18.1",
+    "seaborn>=0.13.2",
+    "torch>=2.14.0",
+    "tqdm>=4.70.1",
+    "xgboost>=3.4.1",
+]
+
+[[tool.uv.index]]
+url = "https://download.pytorch.org/whl/cu126"

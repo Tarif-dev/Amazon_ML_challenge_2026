@@ -1,0 +1,1193 @@
+I went through the uploaded **Amazon ML Challenge 2026** video carefully, including the slide transitions and the detailed on-screen examples. I also saved the important challenge information to memory so we can reuse it during your preparation.
+
+One important accuracy note: **I can reliably transcribe the visual/on-screen content from this video, but I don't have a speech-to-text engine available in this environment to guarantee a word-for-word transcription of the spoken narration.** I won't fabricate audio words and call that an “exact transcript.”
+
+## Verified transcript of the video
+
+### 1/6 — Business Entity Resolution
+
+**AMAZON ML CHALLENGE 2026**
+
+# Business Entity Resolution
+
+> Determine which business records, arriving from three independent sources with no shared identifier, describe the same real-world business.
+
+---
+
+### 2/6 — THE PROBLEM
+
+# From sign-up to matched records
+
+A business signs up. We capture its **name and address**.
+
+Example:
+
+**BUSINESS NAME**
+`Acme Robotics Inc`
+
+**BUSINESS ADDRESS**
+`500 Market St, San Jose, CA`
+
+The video explicitly notes:
+
+> Phone and email exist in reality. This challenge uses name and address only.
+
+The same real-world business can then appear in three independent sources with different representations:
+
+**SOURCE 1 — vendor A format**
+
+`Acme Robotics Inc.`
+`500 Market St, San Jose`
+
+**SOURCE 2 — vendor B format**
+
+`Acme Robotics Incorporated`
+`500 Market Street, San Jose`
+
+**SOURCE 3**
+
+`Acme Robotics`
+`Nr. City Hall, San Jose`
+
+The key point:
+
+> One business, three representations, each from a different data vendor, with no shared ID.
+
+Entity resolution must determine which records actually refer to the same entity.
+
+The video illustrates:
+
+* **Match:** `Acme Robotics Inc` ↔ `Acme Robotics Incorporated`
+* **Match:** `Acme Robotics Inc` ↔ `Acme Robotics, City Hall`
+* **Look-alike:** `Acme Robotics` ↔ `Acme Bakery LLC`
+
+And states:
+
+> Entity resolution links every Source 1 entity to its matches: zero, one, or many.
+
+### Blocking
+
+The example contains records such as:
+
+**Source 1**
+
+* `S1-732914` — Acme Robotics Inc — 500 Market St, San Jose
+* `S1-889301` — Delta Foods — 8 Oak Ave, Austin
+* `S1-410562` — Bright Cafe LLC — 22 Pine St, Reno
+* `S1-205774` — Zen Traders — 4 Hill Rd, Boise
+
+**Source 2**
+
+* `S2-118820` — Acme Robotics Inc — 500 Market Street, San Jose
+* `S2-540221` — Acme Robotix — 12 Elm Rd, San Jose
+* `S2-397155` — Delta Foods Co — 8 Oak Avenue, Austin
+* `S2-663049` — Bright Cafe — 22 Pine Street, Reno
+
+**Source 3**
+
+* `S3-905477` — Acme Robotics — [Nr.] City Hall, San Jose
+* `S3-063118` — Acme Bakery — 500 Market St, San Jose
+* `S3-651230` — Delta Foods Ltd — 8 Oak Ave, Austin
+* `S3-472088` — Kappa Motors — 90 Lake Dr, Fargo
+
+The video explains:
+
+> Each block is keyed on name + address.
+
+The blocks shown include:
+
+* Acme
+* Delta
+* Bright Cafe
+
+And:
+
+> Blocking buckets records by a cheap key built from name and address, so similar names or shared addresses group together, matches and look-alikes alike.
+
+For example:
+
+`S1-732914`
+
+maps to candidate records:
+
+* `S2-118820`
+* `S2-540221`
+* `S3-905477`
+* `S3-063118`
+
+The point is:
+
+> one block, one shortlist
+
+### Candidate filtering
+
+The video then shows:
+
+`candidate_pairs`
+
+→ model evaluates candidates →
+
+`matching_results.tsv`
+
+For example:
+
+`S1-732914 → S2-118820`
+`S1-732914 → S3-905477`
+
+while non-matches are discarded.
+
+The video explicitly states:
+
+> The model filters candidates and keeps only true matches, producing matching_results.tsv.
+
+---
+
+# 3/6 — THE DATASET
+
+## Train to learn, test to prove it
+
+### Training set
+
+* Records across **all 3 sources**
+* Ground-truth labels:
+  `train_ground_truth.tsv`
+* Use the training data to build and evaluate your model.
+
+### Test set
+
+* Same **3 sources**
+* **No labels**
+* Produce a prediction for **every Source 1 entity**
+* This is what the **leaderboard scores**
+
+The ground truth structure is important:
+
+> Ground truth is one row per Source 1 entity: its id maps to a comma-separated list of all matching Source 2 and Source 3 ids, so a single row holds the entity's full match set (empty when it matches nothing).
+
+All files are **tab-separated `.tsv` files**.
+
+The video explicitly instructs:
+
+```python
+sep="\t"
+```
+
+when reading them.
+
+---
+
+# 4/6 — WHAT YOU SUBMIT
+
+## A file, then a package
+
+### During the challenge
+
+Upload:
+
+```text
+matching_results.tsv
+```
+
+This is:
+
+> The only file scored on the leaderboard.
+
+It contains:
+
+> One row per Source 1 entity, empty list means no match.
+
+### Final package
+
+Final submission should be a `.zip` containing:
+
+```text
+output/matching_results.tsv
+```
+
+→ final matches
+
+```text
+output/candidate_pairs.tsv
+```
+
+→ blocking set, audited
+
+```text
+code/...
+```
+
+→ runnable pipeline
+
+```text
+Documentation_template.md
+```
+
+→ methodology
+
+Before submitting, run:
+
+```text
+utils/validate_submission.py
+```
+
+The video says this catches formatting errors before submission.
+
+---
+
+# 5/6 — JUDGING & TIPS
+
+## Scoring
+
+The challenge is scored on:
+
+> **macro F₀.₅, precision-weighted**
+
+Formula shown in the video:
+
+$$
+F_{0.5}
+=
+\frac{1.25 \times Precision \times Recall}
+{0.25 \times Precision + Recall}
+$$
+
+This is important because **precision receives more emphasis than recall**.
+
+### False merges
+
+The video states:
+
+> A false merge costs about twice as much as a miss, so when unsure, do not merge.
+
+### Singletons
+
+The video defines singletons as:
+
+> Source 1 entities with no match in Source 2 or 3.
+
+For these:
+
+```text
+empty list
+```
+
+is the expected prediction.
+
+The video says:
+
+> Predict an empty list for them and you earn a full 1.0; predict any match and you score 0.
+
+### Blocking
+
+One of the most important statements in the entire video:
+
+> Blocking sets your recall ceiling, so invest there first.
+
+Because:
+
+> You cannot match a record you never consider.
+
+### Regional patterns
+
+The video specifically instructs competitors to:
+
+> Account for region-specific patterns in both names and addresses.
+
+### External data restriction
+
+Very important:
+
+> **No external data lookup.**
+
+The video states:
+
+> External databases, APIs, and geocoding services are strictly prohibited. Use only the provided data.
+
+---
+
+# 6/6 — Closing
+
+**AMAZON ML CHALLENGE 2026**
+
+> **All the best**
+
+> Build something you are proud of, resolve those entities, and enjoy the challenge. We are excited to see what you create.
+
+---
+
+## The critical information I've retained
+
+For our future Amazon ML Challenge preparation, I now have the following core constraints in memory:
+
+**Problem:** Business Entity Resolution
+**Sources:** 3 independent sources
+**Available identifying fields:** Name + Address
+**No shared identifier:** across sources
+**Task:** Map every Source 1 entity to zero/one/multiple matching Source 2/3 entities
+**Blocking:** essential; determines recall ceiling
+**Candidate file:** `candidate_pairs.tsv`
+**Prediction file:** `matching_results.tsv`
+**Training labels:** `train_ground_truth.tsv`
+**Format:** TSV, `sep="\t"`
+**Metric:** macro F0.5, precision-weighted
+**Formula:** `1.25PR / (0.25P + R)`
+**False merge:** roughly 2× cost of a miss
+**Singleton:** empty prediction
+**External data:** strictly prohibited
+**Allowed data:** only provided challenge data
+**Regional name/address patterns:** explicitly important
+**Final package:** predictions + audited candidate pairs + runnable code + methodology
+**Validation:** `utils/validate_submission.py`
+
+This is actually a **very different problem from a conventional Kaggle-style classification task**. The combination of **blocking → candidate generation → entity matching → asymmetric precision/recall cost** is going to be the backbone of how we prepare for this challenge.
+
+
+# Amazon ML Challenge 2026
+
+## Business Entity Resolution — Complete Challenge Brief
+
+---
+
+## 1. Challenge Overview
+
+The Amazon ML Challenge 2026 problem presented in the video is a **Business Entity Resolution** task.
+
+The objective is to determine which business records from three independent data sources refer to the **same real-world business**.
+
+The three sources do not share a common identifier. Therefore, the system must infer whether records represent the same entity using the information available in the provided datasets.
+
+### Core objective
+
+For every business entity in **Source 1**, determine:
+
+* Whether it has no matching entity in Sources 2 or 3.
+* Whether it has one matching entity.
+* Whether it has multiple matching entities.
+
+The final system should produce the complete set of matching Source 2 and Source 3 IDs for every Source 1 entity.
+
+---
+
+# 2. Information Available for Matching
+
+The challenge specifically focuses on:
+
+* **Business name**
+* **Business address**
+
+The video explicitly notes that phone numbers and email addresses may exist in real-world business data, but:
+
+> Phone and email exist in reality. This challenge uses name and address only.
+
+Therefore, the matching system must work with the information provided in the challenge dataset rather than relying on additional identifying information.
+
+---
+
+# 3. Example of the Entity Resolution Problem
+
+The video uses **Acme Robotics** to demonstrate how the same business can be represented differently across independent sources.
+
+### Source 1
+
+**Business Name**
+
+`Acme Robotics Inc`
+
+**Address**
+
+`500 Market St, San Jose`
+
+### Source 2
+
+**Business Name**
+
+`Acme Robotics Incorporated`
+
+**Address**
+
+`500 Market Street, San Jose`
+
+### Source 3
+
+**Business Name**
+
+`Acme Robotics`
+
+**Address**
+
+`Nr. City Hall, San Jose`
+
+Although these records are written differently, they may represent the same real-world business.
+
+This demonstrates the central difficulty of entity resolution:
+
+> Different textual representations can refer to the same real-world entity.
+
+---
+
+# 4. Matching vs. Look-Alike Records
+
+Not every similar-looking business record is a true match.
+
+The challenge therefore requires the system to distinguish between:
+
+### True matches
+
+Records that represent the same real-world business.
+
+For example:
+
+`Acme Robotics Inc`
+
+and
+
+`Acme Robotics Incorporated`
+
+may refer to the same entity.
+
+Similarly:
+
+`Acme Robotics Inc`
+
+and
+
+`Acme Robotics` with an address near City Hall
+
+may represent the same business.
+
+### Look-alike records
+
+Records may contain similar names or addresses without representing the same business.
+
+Therefore, similarity alone is not sufficient.
+
+The objective is **entity-level matching**, not simply string similarity.
+
+---
+
+# 5. Overall Entity Resolution Pipeline
+
+The challenge can be understood as a two-stage process:
+
+```text
+Source 1
+   │
+   ▼
+Blocking
+   │
+   ▼
+Candidate Pairs
+   │
+   ▼
+Candidate Matching / Filtering
+   │
+   ▼
+True Matches
+   │
+   ▼
+matching_results.tsv
+```
+
+The two major stages are:
+
+1. **Blocking / Candidate Generation**
+2. **Candidate Matching / Filtering**
+
+---
+
+# 6. Blocking
+
+## 6.1 What is Blocking?
+
+Comparing every Source 1 record against every Source 2 and Source 3 record would be computationally expensive.
+
+Instead, the challenge uses **blocking** to create a smaller set of potentially relevant candidate records.
+
+The video describes blocking as grouping records using a cheap key constructed from:
+
+> Name + Address
+
+The purpose is to create a shortlist containing potentially matching records.
+
+---
+
+## 6.2 Why Blocking Matters
+
+Blocking is extremely important because it determines the maximum possible recall of the final system.
+
+The key principle from the video is:
+
+> Blocking sets the recall ceiling.
+
+If a true match is excluded during blocking, the later matching model cannot recover it.
+
+In other words:
+
+```text
+True match
+     │
+     ├── excluded by blocking
+     │
+     ▼
+Impossible to recover later
+```
+
+Therefore:
+
+> An entity cannot be matched if it is never considered as a candidate.
+
+This makes candidate generation one of the most important parts of the solution.
+
+---
+
+# 7. Blocking Example from the Video
+
+The video provides the following example records.
+
+## Source 1
+
+| ID        | Business          |
+| --------- | ----------------- |
+| S1-732914 | Acme Robotics Inc |
+| S1-889301 | Delta Foods       |
+| S1-410562 | Bright Cafe LLC   |
+| S1-205774 | Zen Traders       |
+
+## Source 2
+
+| ID        | Business          |
+| --------- | ----------------- |
+| S2-118820 | Acme Robotics Inc |
+| S2-540221 | Acme Robotix      |
+| S2-397155 | Delta Foods Co    |
+| S2-663049 | Bright Cafe       |
+
+## Source 3
+
+| ID        | Business        |
+| --------- | --------------- |
+| S3-905477 | Acme Robotics   |
+| S3-063118 | Acme Bakery     |
+| S3-651230 | Delta Foods Ltd |
+| S3-472088 | Kappa Motors    |
+
+---
+
+# 8. Candidate Generation Example
+
+For the Source 1 entity:
+
+```text
+S1-732914
+Acme Robotics Inc
+```
+
+the blocking process produces the following candidate records:
+
+```text
+S2-118820
+S2-540221
+S3-905477
+S3-063118
+```
+
+These records form the **candidate set**.
+
+Importantly, the candidate set contains both:
+
+* Potential true matches
+* Potential false matches
+
+Blocking is therefore **not the final matching decision**.
+
+It simply determines which records are worth evaluating further.
+
+---
+
+# 9. Candidate Filtering / Matching
+
+After blocking, the matching stage evaluates the candidate pairs.
+
+For the Acme example, the candidate set is:
+
+```text
+S2-118820
+S2-540221
+S3-905477
+S3-063118
+```
+
+The matching stage filters this set and identifies the true matches.
+
+The video illustrates the final matches as:
+
+```text
+S1-732914 → S2-118820
+S1-732914 → S3-905477
+```
+
+The other candidate records are rejected.
+
+The resulting information is written into:
+
+```text
+matching_results.tsv
+```
+
+---
+
+# 10. Dataset Structure
+
+The challenge provides separate training and testing data.
+
+## Training Set
+
+The training data contains:
+
+* Records from Source 1
+* Records from Source 2
+* Records from Source 3
+* Ground-truth matching labels
+
+The ground-truth file is:
+
+```text
+train_ground_truth.tsv
+```
+
+The training data is intended to be used to develop and evaluate the entity-resolution pipeline.
+
+---
+
+# 11. Test Set
+
+The test set contains records from:
+
+* Source 1
+* Source 2
+* Source 3
+
+However:
+
+> The test set does not contain labels.
+
+The system must therefore generate predictions for the test entities.
+
+The video explicitly states that a prediction should be produced for:
+
+> Every Source 1 entity.
+
+---
+
+# 12. Ground Truth Format
+
+The ground truth is organized around **Source 1 entities**.
+
+There is one ground-truth row for each Source 1 entity.
+
+The Source 1 ID maps to a:
+
+> comma-separated list of all matching Source 2 and Source 3 IDs.
+
+Therefore, a Source 1 entity may have:
+
+* No matches
+* One match
+* Multiple matches
+
+### Example conceptually
+
+```text
+Source 1 ID → matching Source 2/3 IDs
+```
+
+For example:
+
+```text
+S1-732914 → S2-118820,S3-905477
+```
+
+If an entity has no matching records:
+
+```text
+S1-205774 → empty
+```
+
+The empty result represents a valid prediction.
+
+---
+
+# 13. File Format
+
+The challenge files are:
+
+```text
+.tsv
+```
+
+which means they are **tab-separated values** files.
+
+When loading them with Python/Pandas, the separator should be:
+
+```python
+sep="\t"
+```
+
+For example:
+
+```python
+import pandas as pd
+
+df = pd.read_csv(
+    "train_ground_truth.tsv",
+    sep="\t"
+)
+```
+
+---
+
+# 14. Submission File
+
+During the challenge, the primary prediction file is:
+
+```text
+matching_results.tsv
+```
+
+The video explicitly states:
+
+> matching_results.tsv is the only file scored on the leaderboard.
+
+Therefore, the correctness of this file is critical.
+
+---
+
+# 15. Required Final ZIP Structure
+
+The final submission package should contain the following structure:
+
+```text
+submission.zip
+│
+├── output/
+│   ├── matching_results.tsv
+│   └── candidate_pairs.tsv
+│
+├── code/
+│   └── ...
+│
+└── Documentation_template.md
+```
+
+### `output/matching_results.tsv`
+
+Contains the final predicted entity matches.
+
+### `output/candidate_pairs.tsv`
+
+Contains the blocking/candidate-generation set.
+
+The video specifically describes this as the:
+
+> blocking set, audited
+
+### `code/`
+
+Contains the runnable implementation/pipeline.
+
+### `Documentation_template.md`
+
+Contains the methodology/documentation.
+
+---
+
+# 16. Prediction Structure
+
+The final matching output should contain:
+
+> One row per Source 1 entity.
+
+This is important.
+
+The output is not simply a list of discovered matches. Every Source 1 entity must be represented.
+
+An entity may have:
+
+```text
+one match
+```
+
+```text
+multiple matches
+```
+
+or:
+
+```text
+no matches
+```
+
+An empty list indicates that the Source 1 entity has no matching entity in Sources 2 or 3.
+
+---
+
+# 17. Submission Validation
+
+Before submitting the final package, the video recommends running:
+
+```text
+utils/validate_submission.py
+```
+
+This validation step is intended to identify formatting or submission-structure problems before submission.
+
+---
+
+# 18. Evaluation Metric
+
+The challenge uses:
+
+> **Macro F0.5, precision-weighted**
+
+The formula shown in the video is:
+
+$$
+F_{0.5}
+=
+\frac{1.25 \times Precision \times Recall}
+{0.25 \times Precision + Recall}
+$$
+
+Equivalently:
+
+$$
+F_{\beta}
+=
+(1+\beta^2)
+\frac{Precision \times Recall}
+{\beta^2 Precision + Recall}
+$$
+
+with:
+
+$$
+\beta=0.5
+$$
+
+---
+
+# 19. Why Precision Matters More
+
+F0.5 places more emphasis on **precision** than recall.
+
+This is particularly important for entity resolution because an incorrect merge can be more damaging than failing to merge two records.
+
+The video states:
+
+> A false merge costs about twice as much as a miss.
+
+Therefore, the system should be conservative when the evidence for a match is weak.
+
+The video summarizes this principle as:
+
+> When unsure, do not merge.
+
+This does **not** mean that recall should be ignored.
+
+Rather, the system needs to balance:
+
+* Finding genuine matches
+* Avoiding incorrect merges
+
+while operating under a metric that gives greater weight to precision.
+
+---
+
+# 20. Singletons
+
+A **singleton** is a Source 1 entity that has:
+
+> No match in Sources 2 or 3.
+
+For these entities, the correct prediction is:
+
+```text
+empty list
+```
+
+The video states that:
+
+> Predicting an empty list for a singleton receives 1.0.
+
+Whereas:
+
+> Predicting any match for a singleton scores 0.
+
+Therefore, identifying entities that genuinely have no corresponding records is an important part of the problem.
+
+---
+
+# 21. Regional Patterns
+
+The video explicitly highlights the importance of:
+
+> Region-specific patterns in names and addresses.
+
+Business names and addresses may vary depending on geographic region.
+
+A robust system should therefore avoid assuming that every region follows exactly the same:
+
+* Address conventions
+* Abbreviations
+* Naming patterns
+* Formatting
+* Ordering of address components
+
+Regional variation should be considered during both:
+
+* Blocking
+* Matching
+
+---
+
+# 22. External Data Restrictions
+
+This is one of the most important rules in the challenge.
+
+The video explicitly states that:
+
+> External databases, APIs, and geocoding services are strictly prohibited.
+
+Therefore, the solution must rely only on the information provided in the challenge datasets.
+
+The following types of external enrichment are prohibited:
+
+* External business databases
+* External APIs
+* Geocoding services
+* External entity databases
+
+The intended solution must be built using the provided challenge data.
+
+---
+
+# 23. Key Challenge Principles
+
+The complete problem can therefore be reduced to several core principles.
+
+### Principle 1 — Resolve entities, not strings
+
+Two records do not need to be textually identical to represent the same business.
+
+---
+
+### Principle 2 — Blocking comes first
+
+The blocking stage determines which potential matches are even considered.
+
+A missed candidate at this stage cannot be recovered later.
+
+---
+
+### Principle 3 — Candidate generation is not matching
+
+A candidate pair is only a possibility.
+
+The matching stage must determine whether the candidate is actually the same real-world entity.
+
+---
+
+### Principle 4 — Precision matters heavily
+
+The evaluation metric is F0.5, which gives greater weight to precision.
+
+False merges are particularly costly.
+
+---
+
+### Principle 5 — No-match predictions matter
+
+Some Source 1 entities genuinely have no corresponding entity in Sources 2 or 3.
+
+These must be represented with an empty list.
+
+---
+
+### Principle 6 — Use only challenge data
+
+External databases, APIs, and geocoding services cannot be used.
+
+---
+
+### Principle 7 — Regional variation matters
+
+Name and address normalization/matching should account for regional patterns.
+
+---
+
+# 24. End-to-End Challenge Workflow
+
+A complete conceptual pipeline is:
+
+```text
+                 ┌──────────────────┐
+                 │   Source 1 Data  │
+                 └────────┬─────────┘
+                          │
+                          ▼
+                ┌────────────────────┐
+                │ Name + Address     │
+                │ Normalization      │
+                └─────────┬──────────┘
+                          │
+                          ▼
+                ┌────────────────────┐
+                │     Blocking       │
+                │ Candidate Creation │
+                └─────────┬──────────┘
+                          │
+                          ▼
+                ┌────────────────────┐
+                │ candidate_pairs.tsv│
+                └─────────┬──────────┘
+                          │
+                          ▼
+                ┌────────────────────┐
+                │ Candidate Matching │
+                │ / Filtering        │
+                └─────────┬──────────┘
+                          │
+                          ▼
+                ┌────────────────────┐
+                │ True Match Sets    │
+                │ + No-Match Cases   │
+                └─────────┬──────────┘
+                          │
+                          ▼
+                ┌────────────────────┐
+                │matching_results.tsv│
+                └────────────────────┘
+```
+
+---
+
+# 25. Submission Checklist
+
+Before submitting, verify:
+
+### Data
+
+* [ ] Source 1 processed
+* [ ] Source 2 processed
+* [ ] Source 3 processed
+* [ ] Training ground truth understood
+* [ ] Test entities processed
+
+### Blocking
+
+* [ ] Candidate generation implemented
+* [ ] Candidate pairs audited
+* [ ] Blocking does not unnecessarily eliminate genuine matches
+
+### Matching
+
+* [ ] Candidate pairs evaluated
+* [ ] False merges controlled
+* [ ] Multiple matches supported
+* [ ] No-match entities supported
+
+### Output
+
+* [ ] `matching_results.tsv` generated
+* [ ] One row exists for every Source 1 entity
+* [ ] Empty list used where no match exists
+* [ ] `candidate_pairs.tsv` generated
+
+### Final package
+
+* [ ] `output/matching_results.tsv`
+* [ ] `output/candidate_pairs.tsv`
+* [ ] `code/...`
+* [ ] `Documentation_template.md`
+
+### Validation
+
+* [ ] `utils/validate_submission.py` executed
+* [ ] No formatting errors remain
+
+---
+
+# 26. Essential Facts at a Glance
+
+| Category             | Challenge Requirement          |
+| -------------------- | ------------------------------ |
+| Problem              | Business Entity Resolution     |
+| Sources              | 3 independent sources          |
+| Shared ID            | None                           |
+| Matching fields      | Business name + address        |
+| Phone/email          | Not used                       |
+| Primary entity       | Source 1                       |
+| Target entities      | Source 2 + Source 3            |
+| Possible matches     | Zero, one, or multiple         |
+| Candidate generation | Blocking                       |
+| Blocking key         | Name + address                 |
+| Candidate output     | `candidate_pairs.tsv`          |
+| Prediction output    | `matching_results.tsv`         |
+| Training labels      | `train_ground_truth.tsv`       |
+| File format          | TSV                            |
+| Pandas separator     | `sep="\t"`                     |
+| Evaluation           | Macro F0.5                     |
+| Metric emphasis      | Precision-weighted             |
+| False merge          | ~2× cost of a miss             |
+| Singleton            | Source 1 entity with no match  |
+| Singleton prediction | Empty list                     |
+| Blocking importance  | Sets recall ceiling            |
+| Regional variation   | Must be considered             |
+| External databases   | Prohibited                     |
+| External APIs        | Prohibited                     |
+| Geocoding services   | Prohibited                     |
+| Final code           | Must be runnable               |
+| Documentation        | Required                       |
+| Validation           | `utils/validate_submission.py` |
+
+---
+
+# 27. Final Takeaway
+
+The Amazon ML Challenge 2026 problem presented in the video is fundamentally a **large-scale entity matching problem**.
+
+The solution needs to answer:
+
+> **“Which records from Source 2 and Source 3 refer to the same real-world business as this Source 1 record?”**
+
+The challenge is structured around:
+
+```text
+SOURCE 1
+   ↓
+BLOCKING
+   ↓
+CANDIDATE PAIRS
+   ↓
+MATCHING
+   ↓
+TRUE MATCHES / NO MATCH
+   ↓
+matching_results.tsv
+```
+
+The most important constraints are:
+
+1. **Use business name and address.**
+2. **Generate high-quality candidate pairs.**
+3. **Remember that blocking determines the recall ceiling.**
+4. **Filter candidates carefully to avoid false merges.**
+5. **Handle entities with no matches.**
+6. **Account for regional naming/address patterns.**
+7. **Optimize with the precision-heavy F0.5 metric in mind.**
+8. **Use only the provided challenge data.**
+9. **Produce the required TSV files and runnable pipeline.**
+10. **Validate the final submission before uploading.**
+
+This document represents the **video-verified challenge information**. Additional rules or details discovered from other official challenge materials should be treated separately rather than silently mixed into this document.
+

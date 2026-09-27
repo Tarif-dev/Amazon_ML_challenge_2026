@@ -1,0 +1,17 @@
+==========================================================================================
+GROUND TRUTH TARGET ANALYSIS
+==========================================================================================
+
+Unique S2 IDs referenced by ground truth: 3,693,619
+Unique S3 IDs referenced by ground truth: 3,944,746
+
+Expected target coverage:
+S2 GT coverage: 3,693,619 unique IDs
+S3 GT coverage: 3,944,746 unique IDs
+
+Now checking overlap between S2 and S3 IDs...
+S2/S3 ID overlap: 0
+
+==========================================================================================
+DONE
+==========================================================================================

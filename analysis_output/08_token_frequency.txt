@@ -1,0 +1,231 @@
+==========================================================================================
+TOKEN FREQUENCY ANALYSIS — S2
+==========================================================================================
+Processed 5,034,616 rows...
+Finished 5,034,616 rows.
+
+--------------------------------------------------------------------------------
+BUSINESS NAME TOKENS
+--------------------------------------------------------------------------------
+Unique tokens: 810,514
+Total token occurrences: 20,941,656
+Median frequency: 1
+Mean frequency:   25.84
+Max frequency:    528,795
+
+Top 30 most frequent tokens:
+limited                             528,795
+llc                                 528,303
+private                             528,131
+inc                                 400,229
+ltd                                 398,464
+ल                                   237,102
+ट                                   232,862
+र                                   226,825
+ड                                   208,515
+प                                   206,868
+म                                   206,488
+com                                 201,464
+center                              193,696
+pvt                                 189,270
+स                                   160,325
+इव                                  157,955
+partners                            152,694
+services                            145,239
+corp                                141,773
+co                                  139,561
+group                               139,390
+s                                   138,303
+and                                 118,201
+c                                   113,281
+india                               110,684
+क                                   105,891
+holdings                             97,019
+l                                    93,771
+care                                 88,788
+of                                   87,992
+
+Frequency buckets:
+1         :    640,329 tokens
+2-5       :     88,667 tokens
+6-10      :     24,301 tokens
+11-50     :     38,109 tokens
+51-100    :     10,007 tokens
+101-500   :      6,267 tokens
+501-1K    :      1,292 tokens
+1K-5K     :        993 tokens
+5K-10K    :        211 tokens
+10K-50K   :        298 tokens
+50K+      :         40 tokens
+
+--------------------------------------------------------------------------------
+BUSINESS ADDRESS TOKENS
+--------------------------------------------------------------------------------
+Unique tokens: 607,943
+Total token occurrences: 39,294,220
+Median frequency: 2
+Mean frequency:   64.63
+Max frequency:    916,456
+
+Top 30 most frequent tokens:
+no                                  916,456
+road                                669,292
+street                              337,310
+st                                  333,485
+rd                                  330,958
+floor                               319,586
+maharashtra                         319,026
+city                                298,415
+tx                                  292,289
+nagar                               286,965
+dr                                  283,537
+1                                   281,615
+a                                   265,465
+delhi                               262,478
+c                                   254,392
+2                                   228,483
+ny                                  225,422
+ave                                 224,070
+drive                               215,965
+pradesh                             214,708
+new                                 210,472
+nc                                  207,687
+west                                200,360
+avenue                              193,632
+oh                                  187,361
+h                                   186,400
+b                                   183,618
+plot                                178,181
+il                                  165,947
+mumbai                              162,531
+
+Frequency buckets:
+1         :    197,587 tokens
+2-5       :    253,156 tokens
+6-10      :     57,324 tokens
+11-50     :     65,177 tokens
+51-100    :     13,388 tokens
+101-500   :     15,221 tokens
+501-1K    :      2,798 tokens
+1K-5K     :      2,501 tokens
+5K-10K    :        351 tokens
+10K-50K   :        322 tokens
+50K+      :        118 tokens
+
+==========================================================================================
+TOKEN FREQUENCY ANALYSIS — S3
+==========================================================================================
+Processed 5,285,603 rows...
+Finished 5,285,603 rows.
+
+--------------------------------------------------------------------------------
+BUSINESS NAME TOKENS
+--------------------------------------------------------------------------------
+Unique tokens: 863,014
+Total token occurrences: 20,782,289
+Median frequency: 1
+Mean frequency:   24.08
+Max frequency:    673,480
+
+Top 30 most frequent tokens:
+limited                             673,480
+private                             639,861
+llc                                 571,362
+ltd                                 427,781
+inc                                 419,917
+center                              220,809
+pvt                                 220,353
+com                                 211,116
+services                            166,621
+partners                            161,955
+s                                   147,647
+group                               144,614
+co                                  143,838
+corp                                140,236
+ल                                   134,117
+ट                                   132,429
+र                                   128,844
+and                                 122,220
+ड                                   117,653
+प                                   116,694
+म                                   116,370
+c                                   113,132
+india                               112,959
+holdings                             99,024
+care                                 95,821
+of                                   90,980
+स                                    90,553
+l                                    89,809
+इव                                   88,517
+a                                    79,896
+
+Frequency buckets:
+1         :    673,612 tokens
+2-5       :    105,634 tokens
+6-10      :     24,907 tokens
+11-50     :     37,210 tokens
+51-100    :     12,154 tokens
+101-500   :      6,699 tokens
+501-1K    :      1,248 tokens
+1K-5K     :        995 tokens
+5K-10K    :        209 tokens
+10K-50K   :        304 tokens
+50K+      :         42 tokens
+
+--------------------------------------------------------------------------------
+BUSINESS ADDRESS TOKENS
+--------------------------------------------------------------------------------
+Unique tokens: 580,065
+Total token occurrences: 40,377,678
+Median frequency: 2
+Mean frequency:   69.61
+Max frequency:    911,355
+
+Top 30 most frequent tokens:
+no                                  911,355
+road                                619,124
+new                                 466,739
+street                              357,143
+city                                352,105
+st                                  331,436
+north                               327,168
+rd                                  326,238
+mh                                  318,420
+1                                   309,522
+texas                               293,313
+dr                                  281,587
+floor                               277,745
+delhi                               272,877
+a                                   270,451
+nagar                               267,813
+c                                   259,963
+drive                               241,783
+2                                   238,183
+york                                228,655
+ave                                 224,220
+carolina                            215,875
+avenue                              212,211
+dl                                  201,529
+mumbai                              197,983
+unit                                196,849
+west                                191,943
+ohio                                188,077
+b                                   187,648
+h                                   183,870
+
+Frequency buckets:
+1         :    189,050 tokens
+2-5       :    238,507 tokens
+6-10      :     55,338 tokens
+11-50     :     63,140 tokens
+51-100    :     13,135 tokens
+101-500   :     14,826 tokens
+501-1K    :      2,719 tokens
+1K-5K     :      2,531 tokens
+5K-10K    :        356 tokens
+10K-50K   :        344 tokens
+50K+      :        119 tokens
+
+==========================================================================================
+DONE
+==========================================================================================
